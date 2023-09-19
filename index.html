@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/estilos.css">
 </head>
 <body>
-    <script src="calculador_prestamo.js"></script>
+    <header>
+        <h1>Prestamos Bancarios</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Solicitar préstamo</h2>
+            <div id="formulario">
+                <label for="tipoPrestamo">Tipo de préstamo:</label>
+                <select id="tipoPrestamo">
+                    <option value="consumo">Consumo</option>
+                    <option value="hipotecario">Hipotecario</option>
+                </select><br>
+                <div id="creditoConsumo" class="opciones-prestamo">
+                    <label for="montoConsumo">Monto:</label>
+                    <input type="number" id="montoConsumo"><br>
+                    <label for="cuotasConsumo">Cuotas:</label>
+                    <input type="number" id="cuotasConsumo"><br>
+                </div>
+                <div id="creditoHipotecario" class="opciones-prestamo">
+                    <label for="montoHipotecario">Monto:</label>
+                    <input type="number" id="montoHipotecario"><br>
+                    <label for="añosHipotecario">Años:</label>
+                    <input type="number" id="añosHipotecario"><br>
+                </div>
+                <button id="calcular">Calcular</button>
+            </div>
+            <div id="resultado"></div>
+        </section>
+<!--         <section>
+            <h2>Detalles del préstamo</h2>
+            <div id="loanDetails">
+                <!-- Aquí se mostrarán los detalles del préstamo -->
+<!--             </div>
+        </section> -- -->
+    </main>
+    <footer>
+        <p>© 2023 Claudio Ramos</p>
+    </footer>
+    <script src="assets/js/calculador_prestamo.js"></script>
 </body>
 </html>
