@@ -4,67 +4,65 @@ body {
     margin: 0;
     padding: 0;
     }
-   header {
+header {
     background-color: #333;
     color: #fff;
     padding: 20px;
     }
-  
-  header h1 {
+
+header h1 {
     margin: 0;
-  }
-  
-  main {
+}
+
+main {
     padding: 20px;
-  }
-  
-  section {
+}
+section {
     margin-bottom: 20px;
-  }
-  
-  h2 {
+}
+h2 {
     color: #333;
     border-bottom: 1px solid #333;
     padding-bottom: 5px;
-  }
-  .opciones-prestamo {
+}
+.opciones-prestamo {
     display: none;
 }
-  
-  form div {
+
+form div {
     margin-bottom: 10px;
-  }
-  
-  label {
+}
+
+label {
     display: block;
     font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
+}
+
+input[type="text"],
+input[type="number"] {
     padding: 5px;
-  }
-  
-  button {
+}
+
+button {
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
     border: none;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #555;
-  }
-  
-  #loanDetails {
+}
+
+#loanDetails {
     border: 1px solid #333;
     padding: 10px;
-  }
-  
-  footer {
+}
+
+footer {
     background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
-  }
+}
