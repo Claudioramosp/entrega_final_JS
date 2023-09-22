@@ -1,47 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
-</head>
+    <head>
+        <title>Préstamos</title>
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
 <body>
-    <header>
-        <h1>Prestamos Bancarios</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Solicitar préstamo</h2>
-            <div id="formulario">
-                <label for="tipoPrestamo">Tipo de préstamo:</label>
-                <select id="tipoPrestamo">
-                    <option value="consumo">Consumo</option>
-                    <option value="hipotecario">Hipotecario</option>
-                </select><br>
-                <div id="creditoConsumo" class="opciones-prestamo">
-                    <label for="montoConsumo">Monto:</label>
-                    <input type="number" id="montoConsumo"><br>
-                    <label for="cuotasConsumo">Cuotas:</label>
-                    <input type="number" id="cuotasConsumo"><br>
-                </div>
-                <div id="creditoHipotecario" class="opciones-prestamo">
-                    <label for="montoHipotecario">Monto:</label>
-                    <input type="number" id="montoHipotecario"><br>
-                    <label for="añosHipotecario">Años:</label>
-                    <input type="number" id="añosHipotecario"><br>
-                </div>
-                <button id="calcular">Calcular</button>
-            </div>
-            <div id="resultado"></div>
-        </section>
-<!--         <section>
-            <h2>Detalles del préstamo</h2>
-            <div id="loanDetails">
-                <!-- Aquí se mostrarán los detalles del préstamo -->
-<!--             </div>
-        </section> -- -->
-    </main>
+    <h1>Préstamos Bancarios</h1>
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" placeholder="Ingrese su RUT"><br><br>
+            <label for="montoConsumo">Monto:</label>
+            <input type="number" id="montoConsumo" placeholder="Ingrese el monto"><br><br>
+                <label for="cuotasConsumo">Cuotas:</label>
+                <input type="number" id="cuotasConsumo" placeholder="Indique cantidad de cuotas"><br><br>
+            <button id="calcular">Calcular</button>
+            <button id="verPrestamos">Ver Préstamos</button>
+        <h2>Listado de Préstamos solicitados</h2>
+    <div id="prestamosContainer"></div>
+    
     <footer>
         <p>© 2023 Claudio Ramos</p>
     </footer>
-    <script src="JS/calculador_prestamo.js"></script>
-</body>
+        <script src="JS/calculador_prestamo.js"></script>
+    </body>
 </html>

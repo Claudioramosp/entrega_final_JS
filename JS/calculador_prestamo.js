@@ -1,50 +1,96 @@
-document.getElementById("tipoPrestamo").addEventListener("change", function() {
-    let tipoPrestamo = this.value;
-    let consumoDiv = document.getElementById("creditoConsumo");
-    let hipotecarioDiv = document.getElementById("creditoHipotecario");
-  
-    if (tipoPrestamo === "consumo") {
-        consumoDiv.style.display = "block";
-        hipotecarioDiv.style.display = "none";
-    } else if (tipoPrestamo === "hipotecario") {
-        consumoDiv.style.display = "none";
-        hipotecarioDiv.style.display = "block";
-    } else {
-        consumoDiv.style.display = "none";
-        hipotecarioDiv.style.display = "none";
+class Prestamo {
+    constructor(rut, monto, cuota, valorCuota, costoTotal) {
+        this.rut = rut;
+        this.monto = monto;
+        this.cuota = cuota;
+        this.valorCuota = valorCuota;
+        this.costoTotal = costoTotal;
     }
-  });
-  
-  document.getElementById("calcular").addEventListener("click", function() {
-    let tipoPrestamo = document.getElementById("tipoPrestamo").value;
-    let resultadoDiv = document.getElementById("resultado");
-    resultadoDiv.innerHTML = ""; // Limpiar el contenido previo
-  
-    if (tipoPrestamo === "consumo") {
-        let monto = parseFloat(document.getElementById("montoConsumo").value);
-        let cuotas = parseInt(document.getElementById("cuotasConsumo").value);
-  
-        if (isNaN(monto) || isNaN(cuotas)) {
-            resultadoDiv.innerHTML = "Por favor, ingrese valores numéricos válidos.";
-        } else {
-            let total = monto * 1.1; // Cálculo de total con un interés del 10%
-            let cuotaMensual = total / cuotas;
-  
-            resultadoDiv.innerHTML = `El total a pagar será de $${total.toFixed(2)}, y la cuota mensual será de $${cuotaMensual.toFixed(2)}.`;
-        }
-    } else if (tipoPrestamo === "hipotecario") {
-        let monto = parseFloat(document.getElementById("montoHipotecario").value);
-        let años = parseInt(document.getElementById("añosHipotecario").value);
-  
-        if (isNaN(monto) || isNaN(años)) {
-            resultadoDiv.innerHTML = "Por favor, ingrese valores numéricos válidos.";
-        } else {
-            let total = monto * 1.2; // Cálculo de total con un interés del 20%
-            let cuotaMensual = total / (años * 12); // Se considera 12 meses por año
-  
-            resultadoDiv.innerHTML = `El total a pagar será de $${total.toFixed(2)}, y la cuota mensual será de $${cuotaMensual.toFixed(2)}.`;
-        }
-    } else {
-        resultadoDiv.innerHTML = "Por favor, seleccione un tipo de préstamo válido.";
+}
+function guardarPrestamo() {
+    let rut = document.getElementById("rut").value;
+    let monto = parseFloat(document.getElementById("montoConsumo").value);
+    let cuotas = parseInt(document.getElementById("cuotasConsumo").value);
+
+    if (rut === "" || isNaN(monto) || isNaN(cuotas)) {
+        alert("Por favor, complete todos los campos con valores válidos.");
+        return;
     }
-  });
+
+    let interes = calcularInteres(cuotas);
+    let montoTotal = monto + (monto * interes);
+    let valorCuota = montoTotal / cuotas;
+    let costoTotal = montoTotal + interes;
+    let prestamo = new Prestamo(rut, monto, cuotas, valorCuota, costoTotal);
+    let prestamosGuardados = obtenerPrestamosGuardados();
+    prestamosGuardados.push(prestamo);
+    localStorage.setItem("prestamos", JSON.stringify(prestamosGuardados));
+
+    mostrarDatosPrestamo(prestamo);
+
+    alert("El préstamo ha sido guardado exitosamente.");
+    }
+
+function obtenerPrestamosGuardados() {
+    let prestamosJSON = localStorage.getItem("prestamos");
+    return prestamosJSON ? JSON.parse(prestamosJSON) : [];
+}
+
+function calcularInteres(cuotas) {
+    let interes = 0;
+
+    if (cuotas >= 2 && cuotas <= 6) {
+        interes = 0.02;
+    } else if (cuotas >= 7 && cuotas <= 12) {
+        interes = 0.04;
+    } else if (cuotas > 12) {
+        interes = 0.05;
+    }
+
+    return interes;
+}
+
+function mostrarDatosPrestamo(prestamo) {
+    let prestamosContainer = document.getElementById("prestamosContainer");
+    let datosPrestamo = document.createElement("div");
+    datosPrestamo.innerHTML = `
+        <p>Monto solicitado: $${prestamo.monto}</p>
+        <p>Cuotas: ${prestamo.cuota}</p>
+        <p>Valor por cuota: $${prestamo.valorCuota}</p>
+        <p>Costo total del crédito: $${prestamo.costoTotal}</p>
+    `;
+
+    prestamosContainer.appendChild(datosPrestamo);
+}
+
+    function mostrarPrestamos() {
+    let rut = document.getElementById("rut").value;
+    let prestamosGuardados = obtenerPrestamosGuardados();
+
+    let prestamosFiltrados = prestamosGuardados.filter(
+        (prestamo) => prestamo.rut === rut
+    );
+
+    let prestamosContainer = document.getElementById("prestamosContainer");
+    prestamosContainer.innerHTML = ""; // Limpiar contenido previo
+
+    if (prestamosFiltrados.length === 0) {
+        let noPrestamosMsg = document.createElement("p");
+        noPrestamosMsg.textContent = "No se encontraron préstamos para el RUT indicado.";
+        prestamosContainer.appendChild(noPrestamosMsg);
+        return;
+    }
+
+    let prestamosList = document.createElement("ul");
+
+    for (let prestamo of prestamosFiltrados) {
+        let prestamoItem = document.createElement("li");
+        prestamoItem.textContent = `RUT: ${prestamo.rut}, Monto: $${prestamo.monto}, Cuotas: ${prestamo.cuota}`;
+        prestamosList.appendChild(prestamoItem);
+    }
+
+    prestamosContainer.appendChild(prestamosList);
+}
+
+document.getElementById("calcular").addEventListener("click", guardarPrestamo);
+document.getElementById("verPrestamos").addEventListener("click", mostrarPrestamos);

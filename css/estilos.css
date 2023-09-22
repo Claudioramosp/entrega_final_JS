@@ -1,14 +1,15 @@
-/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    }
+    text-align: center;
+    align-items: center;
+}
+
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: gray;
+    color: white;
     padding: 20px;
-    }
+}
 
 header h1 {
     margin: 0;
@@ -17,17 +18,17 @@ header h1 {
 main {
     padding: 20px;
 }
+
 section {
     margin-bottom: 20px;
 }
+
 h2 {
-    color: #333;
-    border-bottom: 1px solid #333;
+    color: black;
     padding-bottom: 5px;
 }
-.opciones-prestamo {
-    display: none;
-}
+
+
 
 form div {
     margin-bottom: 10px;
@@ -45,24 +46,24 @@ input[type="number"] {
 
 button {
     padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: black;
+    color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: gray;
 }
 
 #loanDetails {
-    border: 1px solid #333;
+    border: 1px solid black;
     padding: 10px;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: gray;
+    color: white;
     padding: 10px;
     text-align: center;
 }
