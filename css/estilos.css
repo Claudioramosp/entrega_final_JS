@@ -1,69 +1,77 @@
+* {
+  background-color: #f1faee;
+}
 body {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+h1, h2 {
+  text-align: center;
+}
+
+/* Encabezado */
 header {
-    background-color: gray;
-    color: white;
-    padding: 20px;
+  color: black;
+  padding: 20px;
 }
 
-header h1 {
-    margin: 0;
-}
-
+/* Formulario */
 main {
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: black;
-    padding-bottom: 5px;
-}
-
-
-
-form div {
-    margin-bottom: 10px;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 label {
-    display: block;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 input[type="text"],
 input[type="number"] {
-    padding: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
+  display: inline;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: gray;
+  background-color: #555;
 }
 
-#loanDetails {
-    border: 1px solid black;
-    padding: 10px;
+/* Listado de préstamos */
+#prestamosContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
+/* Pie de página */
 footer {
-    background-color: gray;
-    color: white;
-    padding: 10px;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
