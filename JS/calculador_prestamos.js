@@ -7,6 +7,7 @@ class Prestamo {
       this.costoTotal = costoTotal;
   }
 }
+
 function guardarPrestamo() {
   let rut = document.getElementById("rut").value;
   let monto = parseFloat(document.getElementById("montoConsumo").value);

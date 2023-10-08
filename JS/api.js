@@ -6,7 +6,6 @@ const options = {
 		'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
 	}
 };
-
 try {
 	const response = await fetch(url, options);
 	const result = await response.text();
