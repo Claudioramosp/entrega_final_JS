@@ -1,4 +1,4 @@
-/* const url = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete?q=tesla&region=US';
+const url = 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete?q=tesla&region=US';
 const options = {
 	method: 'GET',
 	headers: {
@@ -12,4 +12,4 @@ try {
 	console.log(result);
 } catch (error) {
 	console.error(error);
-} */
+}
